@@ -49,12 +49,7 @@ client.distube = new DisTube(client, {
    
     
     youtubeCookie: `PREF=tz=Africa.Cairo; CONSISTENCY=ADecB4uJV8rasR1-qBpC4-VcW2xWQV5I5_OEMg8ieT6PoH1NcBGDDHdLwbd6vQTFA1dTEB8hPHFb9CuvjrFFfuFXc0hdYsADv4iqEZHBOOD5kau4nWGAp_kLvnB19K9oEybX`,
-    "spotifyapi": {
-        "enabled": true,
-        "clientSecret": "GJmyWmLhVqXkVhYa39xCzc_mU1w1NW4S",
-        "clientId": "GJmyWmLhVqXkVhYa39xCzc_mU1w1NW4S"
-       
-  },
+    
     plugins: [
         new SpotifyPlugin({
             emitEventsAfterFetching: true
