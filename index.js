@@ -44,6 +44,12 @@ client.distube = new DisTube(client, {
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: false,
+ 
+   
+   
+    youtubeDL:false,
+    youtubeCookie: `PREF=tz=Africa.Cairo; CONSISTENCY=ADecB4uJV8rasR1-qBpC4-VcW2xWQV5I5_OEMg8ieT6PoH1NcBGDDHdLwbd6vQTFA1dTEB8hPHFb9CuvjrFFfuFXc0hdYsADv4iqEZHBOOD5kau4nWGAp_kLvnB19K9oEybX`,
+    
     plugins: [
         new SpotifyPlugin({
             emitEventsAfterFetching: true
