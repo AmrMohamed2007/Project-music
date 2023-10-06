@@ -40,11 +40,12 @@ const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 
 client.distube = new DisTube(client, {
-    leaveOnStop: false,
-    emitNewSongOnly: true,
-    emitAddSongWhenCreatingQueue: false,
-    emitAddListWhenCreatingQueue: false,
+    leaveOnStop: true,
+  emitNewSongOnly: true,
+  leaveOnEmpty:true,
  
+  emitAddSongWhenCreatingQueue: false,
+  emitAddListWhenCreatingQueue: true,
    
    
     
