@@ -56,15 +56,15 @@ client.distube = new DisTube(client, {
             emitEventsAfterFetching: false,
             api:{
                 
-                    "enabled": true,
+                   
                     "clientSecret": "GJmyWmLhVqXkVhYa39xCzc_mU1w1NW4S",
                     "clientId": "GJmyWmLhVqXkVhYa39xCzc_mU1w1NW4S"
                    
              
             }
           }),
-        new SoundCloudPlugin(),
-        new YtDlpPlugin()
+        new SoundCloudPlugin()
+       
     ]
 })
 const status = queue =>
