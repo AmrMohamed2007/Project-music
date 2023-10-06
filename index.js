@@ -139,24 +139,24 @@ client.distube
      
         
     })
-    .on('addSong', (queue, song) =>
+    client.distube .on('addSong', (queue, song) =>
         queue.textChannel.send(
             `Done Added **${song.name}** - \`${song.formattedDuration}\` to the Bot's queue - ${song.user}`
         )
     )
-    .on('addList', (queue, playlist) =>
+    client.distube  .on('addList', (queue, playlist) =>
         queue.textChannel.send(
             `Done added \`${playlist.name}\` to the playlist (The playlist has \`${playlist.songs.length}\` songs) to queue\n${status(queue)}`
         )
     )
-    .on('error', (channel, e) => {
+    client.distube .on('error', (channel, e) => {
         return console.error(e)
     })
-    .on('empty', channel => channel.send('Voice channel is empty!, I will leave !!'))
-    .on('searchNoResult', (message, query) =>
+    client.distube  .on('empty', channel => channel.send('Voice channel is empty!, I will leave !!'))
+    client.distube  .on('searchNoResult', (message, query) =>
         message.channel.send(`No Resault was found for \`${query}\`!`)
     )
-    .on('finish', queue => queue.textChannel.send('No more songs in the queue'))
+    client.distube .on('finish', queue => queue.textChannel.send('No more songs in the queue'))
 
 module.exports = client;
 
