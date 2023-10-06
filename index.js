@@ -136,8 +136,6 @@ client.distube
          }
        })
        })
-     
-        
     })
     client.distube .on('addSong', (queue, song) =>
         queue.textChannel.send(
