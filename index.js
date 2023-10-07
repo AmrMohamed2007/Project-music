@@ -388,37 +388,38 @@ client.distube
         .setLabel("Autoplay")
         .setStyle(Discord.ButtonStyle.Secondary),
        )
-       queue.textChannel.send({content:`${msg}`,files:[thumbnail],components:[row,row2]}).then((m) => {
-       var collecter =  m.createMessageComponentCollector({})
-       collecter.on("collect" , col => {
-        if (!song.member.voice.channel) return;
-        if(queue.textChannel.guild.members.me.channel.voice.id !== song.member.voice.channel.id) return;
-        if(col.customId == "stop") {
-            queue.stop();
-            col.deferUpdate();
-        } 
-        if(col.customId == "skip") {
-            queue.skip()
-            col.deferUpdate();
-        }
-        if(col.customId == "pause") {
-            queue.pause()
-            col.deferUpdate();
-        }
-        if(col.customId == "resume") {
-            queue.resume()
-            col.deferUpdate();
-        }
-        if(col.customId == "autoplay") {
-           queue.toggleAutoplay();
-           col.deferUpdate();
-        }
-        if(col.customId == "loop") {
-            queue.repeatMode ? (queue.repeatMode === 2 ? queue.setRepeatMode(2) : queue.setRepeatMode(1) ) : queue.setRepeatMode(0) 
-            col.deferUpdate();
-         }
-       })
-       })
+       queue.textChannel.send({content:`${msg}`,files:[thumbnail],components:[row,row2]})
+    //    .then((m) => {
+    //    var collecter =  m.createMessageComponentCollector({})
+    //    collecter.on("collect" , col => {
+    //     if (!song.member.voice.channel) return;
+    //     if(queue.textChannel.guild.members.me.channel.voice.id !== song.member.voice.channel.id) return;
+    //     if(col.customId == "stop") {
+    //         queue.stop();
+    //         col.deferUpdate();
+    //     } 
+    //     if(col.customId == "skip") {
+    //         queue.skip()
+    //         col.deferUpdate();
+    //     }
+    //     if(col.customId == "pause") {
+    //         queue.pause()
+    //         col.deferUpdate();
+    //     }
+    //     if(col.customId == "resume") {
+    //         queue.resume()
+    //         col.deferUpdate();
+    //     }
+    //     if(col.customId == "autoplay") {
+    //        queue.toggleAutoplay();
+    //        col.deferUpdate();
+    //     }
+    //     if(col.customId == "loop") {
+    //         queue.repeatMode ? (queue.repeatMode === 2 ? queue.setRepeatMode(2) : queue.setRepeatMode(1) ) : queue.setRepeatMode(0) 
+    //         col.deferUpdate();
+    //      }
+    //    })
+    //    })
     })
     client.distube .on('addSong', (queue, song) =>
         queue.textChannel.send(
