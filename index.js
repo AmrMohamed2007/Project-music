@@ -391,7 +391,7 @@ client.distube
        queue.textChannel.send({content:`${msg}`,files:[thumbnail],components:[row,row2]}).then((m) => {
        var collecter =  m.createMessageComponentCollector({})
        collecter.on("collect" , col => {
-        if (!message.member.voice.channel) return;
+        if (!song.member.voice.channel) return;
         if(queue.textChannel.guild.members.me.channel.voice.id !== song.member.voice.channel.id) return;
         if(col.customId == "stop") {
             queue.stop();
