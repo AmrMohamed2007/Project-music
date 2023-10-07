@@ -358,6 +358,10 @@ client.distube
     .on('playSong', (queue, song) =>{
        var msg = `🎵 - Playing  **${song.name}** - \`${song.formattedDuration}\``;
        var thumbnail = `${song.thumbnail}`
+       var embed = new Discord.EmbedBuilder()
+       .setDescription(`${msg}`)
+       .setImage(thumbnail)
+       .setDescription()
        var row = new Discord.ActionRowBuilder()
        .setComponents(
         new Discord.ButtonBuilder()
@@ -388,17 +392,21 @@ client.distube
         .setLabel("Autoplay")
         .setStyle(Discord.ButtonStyle.Secondary),
        )
-       queue.textChannel.send({content:`${msg}`,files:[thumbnail],components:[row,row2]})
+       queue.textChannel.send({content:`${msg}`,components:[row,row2],embeds:[embed]})
        .then((m) => {
        var collecter =  m.createMessageComponentCollector({filter: u=>u.user.id == song.member.id})
-       collecter.on("collect" , col => {
+       collecter.on("collect" ,async col => {
        
         if(col.customId == "stop") {
             queue.stop();
+            await col.message.delete()
+
             col.deferUpdate();
         } 
         if(col.customId == "skip") {
             queue.skip()
+            await col.message.delete()
+
             col.deferUpdate();
         }
         if(col.customId == "pause") {
@@ -438,7 +446,7 @@ client.distube
     })
     client.distube  .on('empty', channel => channel.send('Voice channel is empty!, I will leave !!'))
     client.distube  .on('searchNoResult', (message, query) =>
-        message.channel.send(`No Resault was found for \`${query}\`!`)
+    message.send(`No Resault was found for \`${query}\`!`)
     )
     client.distube .on('finish', queue => queue.textChannel.send('No more songs in the queue'))
 
