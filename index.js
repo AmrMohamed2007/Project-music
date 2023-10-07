@@ -430,8 +430,11 @@ client.distube
             `Done added \`${playlist.name}\` to the playlist (The playlist has \`${playlist.songs.length}\` songs) to queue\n${status(queue)}`
         )
     )
-    client.distube .on('error', (channel, e) => {
-        return console.error(e)
+    client.distube .on('error', (channel, error) => {
+    
+            console.error(error);
+            channel.send(`An error encoutered: ${error.slice(0, 1979)}`); // Discord limits 2000 characters in a message
+  
     })
     client.distube  .on('empty', channel => channel.send('Voice channel is empty!, I will leave !!'))
     client.distube  .on('searchNoResult', (message, query) =>
