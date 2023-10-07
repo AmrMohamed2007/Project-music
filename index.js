@@ -356,33 +356,40 @@ const status = queue =>
     }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
 client.distube
     .on('playSong', (queue, song) =>{
-       var msg = `🎵 - Playing  **${song.name}** - \`${song.formattedDuration}\``;
-       var thumbnail = `${song.thumbnail}`
-       var embed = new Discord.EmbedBuilder()
-       .setDescription(`${msg}`)
-       .setImage(thumbnail)
-       .setDescription()
+   
+  
+    console.log(song.thumbnail);
+ var embed =new Discord.EmbedBuilder()
+ .setImage(song.thumbnail)
+ .setColor("Random")
+ .setDescription(song.name)
+    
        var row = new Discord.ActionRowBuilder()
        .setComponents(
         new Discord.ButtonBuilder()
         .setCustomId("stop")
         .setLabel("Stop")
+        // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
         new Discord.ButtonBuilder()
         .setCustomId("skip")
         .setLabel("Skip")
+         // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
         new Discord.ButtonBuilder()
         .setCustomId("loop")
         .setLabel("Loop")
+         // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
         new Discord.ButtonBuilder()
         .setCustomId("pause")
         .setLabel("Pause")
+         // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
         new Discord.ButtonBuilder()
         .setCustomId("resume")
         .setLabel("Resume")
+         // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
        )
        var row2 = new Discord.ActionRowBuilder()
@@ -390,9 +397,10 @@ client.distube
         new Discord.ButtonBuilder()
         .setCustomId("autoplay")
         .setLabel("Autoplay")
+         // .setEmoji("")
         .setStyle(Discord.ButtonStyle.Secondary),
        )
-       queue.textChannel.send({content:`${msg}`,components:[row,row2],embeds:[embed]})
+       queue.textChannel.send({embeds:[embed],content:`🎵 - Playing  **${song.name}** - \`${song.formattedDuration}\``,components:[row,row2]})
        .then((m) => {
        var collecter =  m.createMessageComponentCollector({filter: u=>u.user.id == song.member.id})
        collecter.on("collect" ,async col => {
